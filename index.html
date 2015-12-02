@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Just a giant passcode form">
+    <title>Highly secured area</title>
+    <link href='https://fonts.googleapis.com/css?family=Nixie+One' rel='stylesheet' type='text/css'>
+    <style>
+    	body {
+    		background: #333;
+    		color: #eee;    		
+				font-family: 'Nixie One', cursive;
+    	}
+    	body, html {
+    		height: 100%;
+				margin: 0;
+				padding: 0;
+    	}
+
+    	@keyframes shakeh {
+				0% { -webkit-transform: translateX(0px) }
+				50% { -webkit-transform: translateX(-10px) }
+				100% { -webkit-transform: translateX(10px) }
+			}
+			@-webkit-keyframes shakeh {
+				0% { -webkit-transform: translateX(0px) }
+				50% { -webkit-transform: translateX(-10px) }
+				100% { -webkit-transform: translateX(10px) }
+			}
+
+    	.gpf-wrapper {
+    		width: 90%;
+    		position: relative;
+    		margin: auto;
+			  top: 50%;
+			  transform: translateY(-60%);
+    	}
+    	.gpf-form {
+    		font-size: 100px;
+    	}
+    	.gpf-field {
+    		width: 100%;
+    		height: 130px;
+    		font-size: 100px;
+    		line-height: 100px;
+    		padding: 15px 50px;
+    		margin-top: 20px;
+    		-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				transition: border .1s;
+				border: 0;
+    	}
+    	.gpf-error {
+    		-webkit-animation: shakeh 0.2s 4;
+    		animation: shakeh 0.2s 4;
+    		border: 10px solid orangered;
+    		transition: border .1s;
+    	}
+    	.gpf-success {
+    		border: 10px solid green;
+    		transition: border .1s;
+    	}
+
+    	@media all and (min-width:2000px) {
+    		.gpf-form { 
+    			font-size: 150px;
+    		}
+	    	.gpf-field { 
+	    		height: 190px; 
+	    		font-size: 150px; 
+	    		line-height: 15px; 
+	    		padding: 20px 60px;
+	    	}
+	    }
+    	@media all and (max-width:950px) {
+    		.gpf-form { 
+    			font-size: 70px;
+    		}
+	    	.gpf-field { 
+	    		height: 90px; 
+	    		font-size: 70px; 
+	    		line-height: 70px; 
+	    		padding: 10px 30px;
+	    	}
+	    }
+    	@media all and (max-width:670px) {
+    		.gpf-form { 
+    			font-size: 45px;
+    		}
+	    	.gpf-field { 
+	    		height: 65px; 
+	    		font-size: 45px; 
+	    		line-height: 45px; 
+	    		padding: 10px 20px;
+	    	}
+			}
+    </style>
+  </head>
+  <body>
+  	<div class="gpf-wrapper">
+	  	<form action="#" class="gpf-form" id="gpf-form">
+	  		<label for="gpf-field" class="gpf-label">Enter passcode_</label>
+	  		<input type="password" id="gpf-field" class="gpf-field" value="">
+	  	</form>
+	  </div>
+	  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+	  <script>
+		  $(function() {
+		  	$("#gpf-field").focus();
+		  	$("#gpf-form").submit(function() {
+		  		// don't use this to secure your stuff lol
+		  		if($("#gpf-field").val() == "12345") {
+		  			$("#gpf-field").addClass("gpf-success");
+		  			setTimeout(function() {
+		  				$("#gpf-field").removeClass("gpf-success");
+		  				$("#gpf-field").val("");
+		  			}, 800);
+		  		}
+		  		else {
+		  			$("#gpf-field").addClass("gpf-error");
+		  			setTimeout(function() {
+		  				$("#gpf-field").removeClass("gpf-error");
+		  				$("#gpf-field").val("");
+		  			}, 800);
+		  		}
+		  	});
+		  });
+	  </script>
+  </body>
+ </html>
